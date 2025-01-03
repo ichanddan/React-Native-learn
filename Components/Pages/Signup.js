@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import React from "react";
 
-const Signup = () => {
+const Signup = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollView}>
@@ -53,7 +53,7 @@ const Signup = () => {
 
           <Text style={styles.loginText}>
             Already have an account?{" "}
-            <Text style={styles.loginLink}>Log In</Text>
+            <Text style={styles.loginLink} onPress={() => navigation.navigate("Login")}>Log In</Text>
           </Text>
         </View>
       </ScrollView>

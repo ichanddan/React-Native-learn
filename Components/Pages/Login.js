@@ -1,50 +1,86 @@
-import { View, Text, StyleSheet, Alert } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+  SafeAreaView,
+  ScrollView,
+  Alert,
+} from "react-native";
 import React, { useState } from "react";
-import { Button, Input } from "@rneui/base";
+const data = [
+  {
+    email: "john.doe@example.com",
+    password: "password123"
+  },
+  {
+    email: "jane.smith@example.com", 
+    password: "securepass456"
+  },
+  {
+    email: "test@test.com",
+    password: "test123"
+  }
+]
 
-const Login = () => {
-    const [form, setForm] = useState({
-        email: "",
-        password: "",
-    })
-    const handleChange = (key, value) => {
-        setForm({...form, [key]: value})
+const Login = ({navigation}) => {
+  const [form, setForm] = useState({
+    email: "",
+    password: "",
+  });
+  const handleChange = (key, value) => {
+    setForm({ ...form, [key]: value });
+  };
+  const handleLogin = () => {
+    const user = data.find((user) => user.email === form.email && user.password === form.password);
+    if (user) {
+      console.log({login: true});
+      setTimeout(() => {
+        navigation.navigate("Home");
+      }, 1000);
+    } else {
+      Alert.alert("Invalid email or password");
     }
-    const signInWithEmail = () => {
-        console.log(form)
-        Alert/*  */.alert("Sign in with email")
-    }
-    const signUpWithEmail = () => {
-        console.log(form)
-    }
+  };
+
   return (
-    <View style={styles.container}>
-      <View style={[styles.verticallySpaced, styles.mt20]}>
-        <Input
-          label="Email"
-          leftIcon={{ type: "font-awesome", name: "envelope" }}
-          placeholder="email@address.com"
-          autoCapitalize={"none"}
-          onChangeText={(value) => handleChange("email", value)}
-        />
-      </View>
-      <View style={styles.verticallySpaced}>
-        <Input
-          label="Password"
-          leftIcon={{ type: "font-awesome", name: "lock" }}
-          secureTextEntry={true}
-          placeholder="Password"
-          autoCapitalize={"none"}
-          onChangeText={(value) => handleChange("password", value)}
-        />
-      </View>
-      <View style={[styles.verticallySpaced, styles.mt20]}>
-        <Button title="Sign in" onPress={() => signInWithEmail(form)} />
-      </View>
-      <View style={styles.verticallySpaced}>
-        <Button title="Sign up" onPress={() => signUpWithEmail()} />
-      </View>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <ScrollView contentContainerStyle={styles.scrollView}>
+        <View style={styles.formContainer}>
+          <Text style={styles.title}>Login</Text>
+
+          <TextInput
+            onChangeText={(value) => handleChange("email", value)}
+            style={styles.input}
+            placeholder="Email"
+            keyboardType="email-address"
+            autoCapitalize="none"
+          />
+
+          <TextInput
+            onChangeText={(value) => handleChange("password", value)}
+            style={styles.input}
+            placeholder="Password"
+            secureTextEntry
+          />
+
+          <TouchableOpacity style={styles.button} onPress={handleLogin}>
+            <Text style={styles.buttonText}>Login</Text>
+          </TouchableOpacity>
+
+          <Text style={styles.loginText}>
+            Don't have an account?{" "}
+            <Text
+              style={styles.loginLink}
+              onPress={() => navigation.navigate("Signup")}
+            >
+              Sign Up
+            </Text>
+          </Text>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
@@ -52,18 +88,54 @@ export default Login;
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+    backgroundColor: "#f5f5f5",
+  },
+  scrollView: {
+    flexGrow: 1,
     justifyContent: "center",
-    alignItems: "center",
-    width: "100%",
+  },
+  formContainer: {
+    padding: 20,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginBottom: 20,
+    color: "#333",
     textAlign: "center",
   },
-  verticallySpaced: {
-    paddingTop: 4,
-    paddingBottom: 4,
+  input: {
     width: "100%",
-    alignSelf: "stretch",
+    height: 50,
+    backgroundColor: "white",
+    borderRadius: 5,
+    paddingHorizontal: 10,
+    marginBottom: 10,
+    borderWidth: 1,
+    borderColor: "#ddd",
   },
-  mt20: {
+  button: {
+    width: "100%",
+    height: 50,
+    backgroundColor: "#007AFF",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 5,
+    marginTop: 10,
+  },
+  buttonText: {
+    color: "white",
+    fontSize: 18,
+    fontWeight: "bold",
+  },
+  loginText: {
     marginTop: 20,
+    color: "#333",
+    textAlign: "center",
+  },
+  loginLink: {
+    color: "#007AFF",
+    fontWeight: "bold",
   },
 });
