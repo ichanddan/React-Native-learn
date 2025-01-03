@@ -6,10 +6,63 @@ import {
   StyleSheet,
   SafeAreaView,
   ScrollView,
+  Alert,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 
 const Signup = ({navigation}) => {
+  const [form, setForm] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const handleChange = (key, value) => {
+    setForm({ ...form, [key]: value });
+  };  // Fixed syntax error here (removed 'r')
+  
+  const handleSignup = () => {
+    // Validate required fields
+    if (!form.fullName || !form.email || !form.phone || !form.password || !form.confirmPassword) {
+      Alert.alert("Error", "All fields are required");
+      return;
+    }
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(form.email)) {
+      Alert.alert("Error", "Please enter a valid email address");
+      return;
+    }
+
+    // Validate phone number (basic validation)
+    if (form.phone.length < 10) {
+      Alert.alert("Error", "Please enter a valid phone number");
+      return;
+    }
+
+    // Check password match
+    if (form.password !== form.confirmPassword) {
+      Alert.alert("Error", "Passwords do not match");
+      return;
+    }
+
+    // Check password length
+    if (form.password.length < 6) {
+      Alert.alert("Error", "Password must be at least 6 characters long");
+      return;
+    }
+
+    console.log(form);
+    Alert.alert("Success", "Account created successfully", [
+      {
+        text: "OK",
+        onPress: () => navigation.navigate("Login")
+      }
+    ]);
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollView}>
@@ -17,12 +70,14 @@ const Signup = ({navigation}) => {
           <Text style={styles.title}>Sign Up</Text>
 
           <TextInput
+            onChangeText={(value) => handleChange("fullName", value)}
             style={styles.input}
             placeholder="Full Name"
             autoCapitalize="words"
           />
 
           <TextInput
+            onChangeText={(value) => handleChange("email", value)}
             style={styles.input}
             placeholder="Email"
             keyboardType="email-address"
@@ -30,24 +85,27 @@ const Signup = ({navigation}) => {
           />
 
           <TextInput
+            onChangeText={(value) => handleChange("phone", value)}
             style={styles.input}
             placeholder="Phone Number"
             keyboardType="phone-pad"
           />
 
           <TextInput
+            onChangeText={(value) => handleChange("password", value)}
             style={styles.input}
             placeholder="Password"
             secureTextEntry
           />
 
           <TextInput
+            onChangeText={(value) => handleChange("confirmPassword", value)}
             style={styles.input}
             placeholder="Confirm Password"
             secureTextEntry
           />
 
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button} onPress={handleSignup}>
             <Text style={styles.buttonText}>Sign Up</Text>
           </TouchableOpacity>
 
