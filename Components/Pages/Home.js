@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, FlatList } from 'react-native';
+import DonationSlider from './DonationSlider';
 
 const recentRequests = [
   { id: '1', name: 'John Doe', amount: 50, cause: 'Medical Bills' },
@@ -20,7 +21,7 @@ const Home = () => {
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.title}>Welcome to DonationApp</Text>
-      
+      <DonationSlider />
       <View style={styles.sliderContainer}>
         <Text style={styles.sectionTitle}>Recent Requests</Text>
         <FlatList
