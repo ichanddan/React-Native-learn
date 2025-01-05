@@ -6,13 +6,15 @@ import Home from "./Components/Pages/Home";
 import Signup from "./Components/Pages/Signup";
 import Login from "./Components/Pages/Login";
 import OpeningScreen from "./Components/Pages/OpeningScreen";
+import FeedScreen from "./Components/Pages/FeedScreen";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="OpeningScreen">
+      <Stack.Navigator initialRouteName="feed">
+        <Stack.Screen name="feed" component={FeedScreen} options={{headerShown: false}} />
         <Stack.Screen name="OpeningScreen" component={OpeningScreen} options={{headerShown: false}} />
         <Stack.Screen name="Home" component={Home} options={{headerShown: false}} />
         <Stack.Screen name="Signup" component={Signup} options={{headerShown: false}} />
