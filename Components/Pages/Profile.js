@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { Button } from '@rneui/themed';
-import EditProfileModal from './EditProfileModal';
+import EditProfileModal from '../Pages/EditProfileModal';
 
 const ProfilePage = () => {
   const [isModalVisible, setModalVisible] = useState(false);
@@ -51,12 +51,12 @@ const ProfilePage = () => {
           buttonStyle={styles.additionalButton}
         />
       </View>
-      {/* <EditProfileModal
+      <EditProfileModal
         isVisible={isModalVisible}
         onClose={toggleModal}
         onUpdate={handleUpdateProfile}
         currentProfile={userProfile}
-      /> */}
+      />
     </View>
   );
 };
