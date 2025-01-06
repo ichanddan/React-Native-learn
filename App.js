@@ -7,6 +7,7 @@ import Signup from "./Components/Pages/Signup";
 import Login from "./Components/Pages/Login";
 import OpeningScreen from "./Components/Pages/OpeningScreen";
 import FeedScreen from "./Components/Pages/FeedScreen";
+import ProfilePage from "./Components/Pages/Profile";
 
 const Stack = createNativeStackNavigator();
 
@@ -15,6 +16,7 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="feed">
         <Stack.Screen name="feed" component={FeedScreen} options={{headerShown: false}} />
+        <Stack.Screen name="Profile" component={ProfilePage} options={{headerShown: false}} />
         <Stack.Screen name="OpeningScreen" component={OpeningScreen} options={{headerShown: false}} />
         <Stack.Screen name="Home" component={Home} options={{headerShown: false}} />
         <Stack.Screen name="Signup" component={Signup} options={{headerShown: false}} />
