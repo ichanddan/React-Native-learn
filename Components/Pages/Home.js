@@ -9,6 +9,7 @@ import {
   FlatList,
 } from "react-native";
 import DonationSlider from "./DonationSlider";
+import ImageSlider from "./ImageSlider";
 
 const recentRequests = [
   { id: "1", name: "John Doe", amount: 50, cause: "Medical Bills" },
@@ -18,6 +19,11 @@ const recentRequests = [
 ];
 
 const Home = ({ navigation }) => {
+  const data = [
+    { id: 1, image: 'https://picsum.photos/400/600', title: 'Help those in need' },
+    { id: 2, image: 'https://picsum.photos/400/600', title: 'Support our community' }, 
+    { id: 3, image: 'https://picsum.photos/400/600', title: 'Make a difference' },
+  ];
   const renderRequestItem = ({ item }) => (
     <View style={styles.requestItem}>
       <Text style={styles.requestName}>{item.name}</Text>
@@ -37,6 +43,7 @@ const Home = ({ navigation }) => {
           />
         </TouchableOpacity>
       </View>
+      <ImageSlider data={data} />
       <DonationSlider />
       <View style={styles.sliderContainer}>
         <Text style={styles.sectionTitle}>Recent Requests</Text>
