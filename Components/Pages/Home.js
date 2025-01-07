@@ -20,9 +20,9 @@ const recentRequests = [
 
 const Home = ({ navigation }) => {
   const data = [
-    { id: 1, image: 'https://picsum.photos/400/600', title: 'Help those in need' },
-    { id: 2, image: 'https://picsum.photos/400/600', title: 'Support our community' }, 
-    { id: 3, image: 'https://picsum.photos/400/600', title: 'Make a difference' },
+    { id: 1, image: 'https://picsum.photos/509/600', title: 'Help those in need' },
+    { id: 2, image: 'https://picsum.photos/600/600', title: 'Support our community' }, 
+    { id: 3, image: 'https://picsum.photos/601/600', title: 'Make a difference' },
   ];
   const renderRequestItem = ({ item }) => (
     <View style={styles.requestItem}>
