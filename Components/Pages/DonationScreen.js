@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet, ScrollView, Alert } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 
 const states = [
@@ -21,6 +21,7 @@ export default function DonationScreen() {
 
   const handleSubmit = () => {
     console.log('Donation submitted:', { state, city, amount });
+    Alert.alert('Donation submitted:');
     // Here you would typically send this data to your backend
   };
 
