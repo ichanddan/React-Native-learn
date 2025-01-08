@@ -86,7 +86,7 @@ const Home = ({ navigation }) => {
         </View>
       </View>
 
-      <TouchableOpacity style={styles.donateButton}>
+      <TouchableOpacity style={styles.donateButton} onPress={() => navigation.navigate('DonationScreen')}>
         <Text style={styles.donateButtonText}>Make a Donation</Text>
       </TouchableOpacity>
     </ScrollView>
