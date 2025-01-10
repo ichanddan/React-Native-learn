@@ -70,6 +70,22 @@ export default function DonationSlider() {
           • {Math.floor(donationAmount / 5)} vaccinations in developing countries
         </Text>
       </View>
+
+      <View style={styles.futureImpactContainer}>
+        <Text style={styles.futureImpactTitle}>Future Impact</Text>
+        <Text style={styles.futureImpactText}>
+          With monthly donations of ${donationAmount.toFixed(2)}, in one year you could provide:
+        </Text>
+        <Text style={styles.futureImpactItem}>
+          • {Math.floor(donationAmount * 12 / 2)} total meals
+        </Text>
+        <Text style={styles.futureImpactItem}>
+          • {Math.floor(donationAmount * 12 / 10)} total books
+        </Text>
+        <Text style={styles.futureImpactItem}>
+          • {Math.floor(donationAmount * 12 / 5)} total vaccinations
+        </Text>
+      </View>
     </View>
   );
 }
@@ -131,6 +147,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     padding: 15,
     borderRadius: 10,
+    marginBottom: 20,
   },
   impactTitle: {
     fontSize: 18,
@@ -146,5 +163,26 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginBottom: 5,
   },
+  futureImpactContainer: {
+    backgroundColor: '#e6f3ff',
+    padding: 15,
+    borderRadius: 10,
+  },
+  futureImpactTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 10,
+    color: '#0066cc',
+  },
+  futureImpactText: {
+    fontSize: 16,
+    marginBottom: 5,
+    color: '#333',
+  },
+  futureImpactItem: {
+    fontSize: 14,
+    marginLeft: 10,
+    marginBottom: 5,
+    color: '#444',
+  },
 });
-
