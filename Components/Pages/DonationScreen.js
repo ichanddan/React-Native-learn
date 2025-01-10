@@ -18,16 +18,41 @@ export default function DonationScreen() {
   const [state, setState] = useState('');
   const [city, setCity] = useState('');
   const [amount, setAmount] = useState('');
+  const [donorName, setDonorName] = useState('');
+  const [email, setEmail] = useState('');
+  const [isRecurring, setIsRecurring] = useState(false);
 
   const handleSubmit = () => {
-    console.log('Donation submitted:', { state, city, amount });
-    Alert.alert('Donation submitted:');
+    console.log('Donation submitted:', { state, city, amount, donorName, email, isRecurring });
+    Alert.alert('Donation submitted:', `Thank you ${donorName} for your ${isRecurring ? 'recurring ' : ''}donation of $${amount}`);
     // Here you would typically send this data to your backend
   };
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.title}>Make a Donation</Text>
+
+      <View style={styles.inputContainer}>
+        <Text style={styles.label}>Donor Name:</Text>
+        <TextInput
+          style={styles.input}
+          onChangeText={setDonorName}
+          value={donorName}
+          placeholder="Enter your name"
+        />
+      </View>
+
+      <View style={styles.inputContainer}>
+        <Text style={styles.label}>Email:</Text>
+        <TextInput
+          style={styles.input}
+          onChangeText={setEmail}
+          value={email}
+          placeholder="Enter your email"
+          keyboardType="email-address"
+          autoCapitalize="none"
+        />
+      </View>
 
       <View style={styles.inputContainer}>
         <Text style={styles.label}>State:</Text>
@@ -72,10 +97,18 @@ export default function DonationScreen() {
         />
       </View>
 
+      <View style={styles.inputContainer}>
+        <Button
+          title={isRecurring ? "Make Monthly Donation" : "Make One-time Donation"}
+          onPress={() => setIsRecurring(!isRecurring)}
+          color="#666"
+        />
+      </View>
+
       <Button
         title="Submit Donation"
         onPress={handleSubmit}
-        disabled={!state || !city || !amount}
+        disabled={!state || !city || !amount || !donorName || !email}
       />
     </ScrollView>
   );
