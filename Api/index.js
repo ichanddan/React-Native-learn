@@ -6,7 +6,12 @@ const SignupApi = async (formdata) => {
   const data = await axios.post(`${url}/auth/register`, formdata);
   return data;
 };
+const LoginApi = async (formdata) => {
+  const data = await axios.post(`${url}/auth/login`, formdata);
+  return data;
+};
 
 export default {
     SignupApi,
+    LoginApi
 };

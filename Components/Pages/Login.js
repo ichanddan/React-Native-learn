@@ -9,20 +9,8 @@ import {
   Alert,
 } from "react-native";
 import React, { useState } from "react";
-const data = [
-  {
-    email: "john.doe@example.com",
-    password: "password123"
-  },
-  {
-    email: "jane.smith@example.com", 
-    password: "securepass456"
-  },
-  {
-    email: "test@test.com",
-    password: "test123"
-  }
-]
+import Api from "../../Api";
+
 
 const Login = ({navigation}) => {
   const [form, setForm] = useState({
@@ -33,8 +21,9 @@ const Login = ({navigation}) => {
     setForm({ ...form, [key]: value });
   };
   const handleLogin = () => {
-    const user = data.find((user) => user.email === form.email && user.password === form.password);
+    const user = Api.LoginApi(form)
     if (user) {
+      Alert.alert("Success", 'login');
       console.log({login: true});
       setTimeout(() => {
         navigation.navigate("Home");
