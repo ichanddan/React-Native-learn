@@ -9,6 +9,7 @@ import {
   Alert,
 } from "react-native";
 import React, { useState } from "react";
+import Api from "../../Api";
 
 const Signup = ({navigation}) => {
   const [form, setForm] = useState({
@@ -22,10 +23,15 @@ const Signup = ({navigation}) => {
     setForm({ ...form, [key]: value });
   };  // Fixed syntax error here (removed 'r')
   
-  const handleSignup = () => {
+  const handleSignup = async () => {
     // Validate required fields
     if (!form.fullName || !form.email || !form.phone || !form.password || !form.confirmPassword) {
       Alert.alert("Error", "All fields are required");
+      const res = await Api.SignupApi(form)
+      console.log(res)
+      if (res) {
+        Alert.alert('Success', 'Signup completed')
+      }
       return;
     }
 

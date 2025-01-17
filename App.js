@@ -15,7 +15,7 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="feed">
+      <Stack.Navigator initialRouteName="Signup">
         <Stack.Screen name="feed" component={FeedScreen} options={{headerShown: false}} />
         <Stack.Screen name="Profile" component={ProfilePage} options={{headerShown: false}} />
         <Stack.Screen name="DonationScreen" component={DonationScreen} options={{headerShown: false}} />
