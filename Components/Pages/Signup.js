@@ -11,7 +11,7 @@ import {
 import React, { useState } from "react";
 import Api from "../../Api";
 
-const Signup = ({navigation}) => {
+const Signup = ({ navigation }) => {
   const [form, setForm] = useState({
     fullName: "",
     email: "",
@@ -21,52 +21,19 @@ const Signup = ({navigation}) => {
   });
   const handleChange = (key, value) => {
     setForm({ ...form, [key]: value });
-  };  // Fixed syntax error here (removed 'r')
-  
+  }; // Fixed syntax error here (removed 'r')
+
   const handleSignup = async () => {
     // Validate required fields
-    if (!form.fullName || !form.email || !form.phone || !form.password || !form.confirmPassword) {
-      Alert.alert("Error", "All fields are required");
-      const res = await Api.SignupApi(form)
-      console.log(res)
-      if (res) {
-        Alert.alert('Success', 'Signup completed')
+    try {
+      const res = await Api.SignupApi(form);
+      console.log(res.data);
+      if (res.data) {
+        Alert.alert("Success", "Signup completed");
       }
-      return;
+    } catch (error) {
+      console.log(error);
     }
-
-    // Validate email format
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(form.email)) {
-      Alert.alert("Error", "Please enter a valid email address");
-      return;
-    }
-
-    // Validate phone number (basic validation)
-    if (form.phone.length < 10) {
-      Alert.alert("Error", "Please enter a valid phone number");
-      return;
-    }
-
-    // Check password match
-    if (form.password !== form.confirmPassword) {
-      Alert.alert("Error", "Passwords do not match");
-      return;
-    }
-
-    // Check password length
-    if (form.password.length < 6) {
-      Alert.alert("Error", "Password must be at least 6 characters long");
-      return;
-    }
-
-    console.log(form);
-    Alert.alert("Success", "Account created successfully", [
-      {
-        text: "OK",
-        onPress: () => navigation.navigate("Login")
-      }
-    ]);
   };
 
   return (
@@ -117,7 +84,12 @@ const Signup = ({navigation}) => {
 
           <Text style={styles.loginText}>
             Already have an account?{" "}
-            <Text style={styles.loginLink} onPress={() => navigation.navigate("Login")}>Log In</Text>
+            <Text
+              style={styles.loginLink}
+              onPress={() => navigation.navigate("Login")}
+            >
+              Log In
+            </Text>
           </Text>
         </View>
       </ScrollView>
