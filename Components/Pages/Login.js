@@ -20,11 +20,12 @@ const Login = ({navigation}) => {
   const handleChange = (key, value) => {
     setForm({ ...form, [key]: value });
   };
-  const handleLogin = () => {
-    const user = Api.LoginApi(form)
+  const handleLogin = async () => {
+    const user = await Api.LoginApi(form)
     if (user) {
-      Alert.alert("Success", 'login');
-      console.log({login: true});
+      Alert.alert("Success", user?.data?.message);
+      console.log(user.data);
+      await AsyncStorage.setItem('token', user?.data?.data)
       setTimeout(() => {
         navigation.navigate("Home");
       }, 1000);
