@@ -12,7 +12,7 @@ import React, { useState } from "react";
 import Api from "../../Api";
 
 
-const Login = ({navigation}) => {
+const Login = ({navigation, value}) => {
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -26,11 +26,12 @@ const Login = ({navigation}) => {
       Alert.alert("Success", user?.data?.message);
       console.log(user.data);
       await AsyncStorage.setItem('token', user?.data?.data)
+      value.signIn(user?.data?.data); // Save token in context
       setTimeout(() => {
         navigation.navigate("Home");
       }, 1000);
     } else {
-      Alert.alert("Invalid email or password");
+      Alert.alert('error',"Invalid email or password");
     }
   };
 
