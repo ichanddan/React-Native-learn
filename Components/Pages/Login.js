@@ -8,11 +8,13 @@ import {
   ScrollView,
   Alert,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Api from "../../Api";
+import { AuthContext } from "../../App";
 
 
-const Login = ({navigation, value}) => {
+const Login = ({navigation}) => {
+  const {signIn} = useContext(AuthContext)
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -26,7 +28,7 @@ const Login = ({navigation, value}) => {
       Alert.alert("Success", user?.data?.message);
       console.log(user.data);
       await AsyncStorage.setItem('token', user?.data?.data)
-      value.signIn(user?.data?.data); // Save token in context
+      signIn(user?.data?.data); // Save token in context
       setTimeout(() => {
         navigation.navigate("Home");
       }, 1000);

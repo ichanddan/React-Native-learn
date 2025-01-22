@@ -12,7 +12,7 @@ import DonationScreen from "./Components/Pages/DonationScreen";
 import { createContext, useState } from 'react';
 
 const Stack = createNativeStackNavigator();
-const AuthContext = createContext();
+export const AuthContext = createContext();
 
 export default function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
