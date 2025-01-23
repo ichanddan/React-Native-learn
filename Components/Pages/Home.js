@@ -20,9 +20,21 @@ const recentRequests = [
 
 const Home = ({ navigation }) => {
   const data = [
-    { id: 1, image: 'https://picsum.photos/509/600', title: 'Help those in need' },
-    { id: 2, image: 'https://picsum.photos/600/600', title: 'Support our community' }, 
-    { id: 3, image: 'https://picsum.photos/601/600', title: 'Make a difference' },
+    {
+      id: 1,
+      image: "https://picsum.photos/509/600",
+      title: "Help those in need",
+    },
+    {
+      id: 2,
+      image: "https://picsum.photos/600/600",
+      title: "Support our community",
+    },
+    {
+      id: 3,
+      image: "https://picsum.photos/601/600",
+      title: "Make a difference",
+    },
   ];
   const renderRequestItem = ({ item }) => (
     <View style={styles.requestItem}>
@@ -86,7 +98,10 @@ const Home = ({ navigation }) => {
         </View>
       </View>
 
-      <TouchableOpacity style={styles.donateButton} onPress={() => navigation.navigate('DonationScreen')}>
+      <TouchableOpacity
+        style={styles.donateButton}
+        onPress={() => navigation.navigate("DonationScreen")}
+      >
         <Text style={styles.donateButtonText}>Make a Donation</Text>
       </TouchableOpacity>
     </ScrollView>
@@ -180,12 +195,12 @@ const styles = StyleSheet.create({
     height: 50,
     borderRadius: 25,
     borderWidth: 5,
-    borderColor: '#fff',
+    borderColor: "#fff",
   },
   header: {
-    flexDirection: 'row-reverse',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row-reverse",
+    justifyContent: "space-between",
+    alignItems: "center",
     marginBottom: 20,
     padding: 10,
   },
