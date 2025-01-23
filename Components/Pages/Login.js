@@ -12,9 +12,8 @@ import React, { useContext, useState } from "react";
 import Api from "../../Api";
 import { AuthContext } from "../../App";
 
-
-const Login = ({navigation}) => {
-  const {signIn} = useContext(AuthContext)
+const Login = ({ navigation }) => {
+  const { signIn } = useContext(AuthContext);
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -23,17 +22,17 @@ const Login = ({navigation}) => {
     setForm({ ...form, [key]: value });
   };
   const handleLogin = async () => {
-    const user = await Api.LoginApi(form)
+    const user = await Api.LoginApi(form);
     if (user) {
       Alert.alert("Success", user?.data?.message);
       console.log(user.data);
-      await AsyncStorage.setItem('token', user?.data?.data)
+      await AsyncStorage.setItem("token", user?.data?.data);
       signIn(user?.data?.data); // Save token in context
       setTimeout(() => {
         navigation.navigate("Home");
       }, 1000);
     } else {
-      Alert.alert('error',"Invalid email or password");
+      Alert.alert("error", "Invalid email or password");
     }
   };
 
