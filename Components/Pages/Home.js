@@ -6,7 +6,7 @@ import {
   ScrollView,
   Image,
   TouchableOpacity,
-  FlatList,
+  FlatList
 } from "react-native";
 import DonationSlider from "./DonationSlider";
 import ImageSlider from "./ImageSlider";
@@ -14,7 +14,7 @@ import ImageSlider from "./ImageSlider";
 const recentRequests = [
   { id: "1", name: "John Doe", amount: 50, cause: "Medical Bills" },
   { id: "2", name: "Jane Smith", amount: 100, cause: "Education Fund" },
-  { id: "3", name: "Bob Johnson", amount: 75, cause: "Disaster Relief" },
+  { id: "3", name: "Bob Johnson", amount: 75, cause: "Disaster Relief" }
   // Add more recent requests as needed
 ];
 
@@ -23,18 +23,18 @@ const Home = ({ navigation }) => {
     {
       id: 1,
       image: "https://picsum.photos/509/600",
-      title: "Help those in need",
+      title: "Help those in need"
     },
     {
       id: 2,
       image: "https://picsum.photos/600/600",
-      title: "Support our community",
+      title: "Support our community"
     },
     {
       id: 3,
       image: "https://picsum.photos/601/600",
-      title: "Make a difference",
-    },
+      title: "Make a difference"
+    }
   ];
   const renderRequestItem = ({ item }) => (
     <View style={styles.requestItem}>
@@ -113,60 +113,60 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     backgroundColor: "#f5f5f5",
-    marginTop: 50,
+    marginTop: 50
   },
   title: {
     fontSize: 24,
     fontWeight: "bold",
     marginBottom: 20,
-    textAlign: "center",
+    textAlign: "center"
   },
   sliderContainer: {
-    marginBottom: 20,
+    marginBottom: 20
   },
   sectionTitle: {
     fontSize: 18,
     fontWeight: "bold",
-    marginBottom: 10,
+    marginBottom: 10
   },
   requestItem: {
     backgroundColor: "white",
     padding: 15,
     borderRadius: 10,
     marginRight: 10,
-    width: 150,
+    width: 150
   },
   requestName: {
-    fontWeight: "bold",
+    fontWeight: "bold"
   },
   requestAmount: {
-    color: "green",
+    color: "green"
   },
   requestCause: {
-    fontStyle: "italic",
+    fontStyle: "italic"
   },
   statsContainer: {
     flexDirection: "row",
     justifyContent: "space-around",
-    marginBottom: 20,
+    marginBottom: 20
   },
   statItem: {
-    alignItems: "center",
+    alignItems: "center"
   },
   statNumber: {
     fontSize: 20,
-    fontWeight: "bold",
+    fontWeight: "bold"
   },
   statLabel: {
-    color: "gray",
+    color: "gray"
   },
   categoriesContainer: {
-    marginBottom: 20,
+    marginBottom: 20
   },
   categoriesGrid: {
     flexDirection: "row",
     flexWrap: "wrap",
-    justifyContent: "space-between",
+    justifyContent: "space-between"
   },
   categoryItem: {
     width: "48%",
@@ -174,36 +174,36 @@ const styles = StyleSheet.create({
     padding: 15,
     borderRadius: 10,
     marginBottom: 10,
-    alignItems: "center",
+    alignItems: "center"
   },
   categoryText: {
-    fontWeight: "bold",
+    fontWeight: "bold"
   },
   donateButton: {
     backgroundColor: "#4CAF50",
     padding: 15,
     borderRadius: 10,
-    alignItems: "center",
+    alignItems: "center"
   },
   donateButtonText: {
     color: "white",
     fontWeight: "bold",
-    fontSize: 18,
+    fontSize: 18
   },
   profileImage: {
     width: 50,
     height: 50,
     borderRadius: 25,
     borderWidth: 5,
-    borderColor: "#fff",
+    borderColor: "#fff"
   },
   header: {
     flexDirection: "row-reverse",
     justifyContent: "space-between",
     alignItems: "center",
     marginBottom: 20,
-    padding: 10,
-  },
+    padding: 10
+  }
 });
 
 export default Home;
