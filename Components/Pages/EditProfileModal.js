@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { View, StyleSheet } from 'react-native';
-import { Overlay, Input, Button } from '@rneui/themed';
+import React, { useState } from "react";
+import { View, StyleSheet } from "react-native";
+import { Overlay, Input, Button } from "@rneui/themed";
 
 const EditProfileModal = ({ isVisible, onClose, onUpdate, currentProfile }) => {
   const [name, setName] = useState(currentProfile.name);
@@ -13,7 +13,11 @@ const EditProfileModal = ({ isVisible, onClose, onUpdate, currentProfile }) => {
   };
 
   return (
-    <Overlay isVisible={isVisible} onBackdropPress={onClose} overlayStyle={styles.overlay}>
+    <Overlay
+      isVisible={isVisible}
+      onBackdropPress={onClose}
+      overlayStyle={styles.overlay}
+    >
       <View style={styles.modalContent}>
         <Input
           label="Name"
@@ -58,30 +62,29 @@ const EditProfileModal = ({ isVisible, onClose, onUpdate, currentProfile }) => {
 
 const styles = StyleSheet.create({
   overlay: {
-    width: '90%',
-    borderRadius: 10,
+    width: "90%",
+    borderRadius: 10
   },
   modalContent: {
-    padding: 20,
+    padding: 20
   },
   input: {
-    marginBottom: 15,
+    marginBottom: 15
   },
   buttonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 20,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 20
   },
   button: {
-    width: 120,
+    width: 120
   },
   cancelButton: {
-    backgroundColor: '#e74c3c',
+    backgroundColor: "#e74c3c"
   },
   updateButton: {
-    backgroundColor: '#3498db',
-  },
+    backgroundColor: "#3498db"
+  }
 });
 
 export default EditProfileModal;
-
