@@ -10,7 +10,7 @@ const OpeningScreen = ({navigation}) => {
     <View style={styles.container}>
       <Text style={styles.title}>Welcome to the app</Text>
       <Image
-        source={require('../../assets/golden-logo-template-free-png.webp')}
+        source={require('..D/../assets/golden-logo-template-free-png.webp')}
         style={{
           width: 300,
           height: 300,
